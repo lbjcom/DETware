@@ -1,7 +1,14 @@
+function [] = Eval_Spkr_Det(target_name, imposter_name)
 %------------------------------
 %load speaker detection output scores
-load out_target.txt
-load out.txt
+
+fp_target = fopen(target_name);
+target_score = textscan(fp_target, "%s %s %d %s %f", 'delimiter', ' ');
+target_score = target_score{1,5};
+
+fp_imposter = fopen(imposter_name);
+imposter_score = textscan(fp_imposter, "%s %s %d %s %f", 'delimiter', ' ');
+imposter_score = imposter_score{1,5};
 
 %------------------------------
 %initialize the DCF parameters
@@ -9,7 +16,7 @@ Set_DCF (10, 1, 0.01);
 
 %------------------------------
 %compute Pmiss and Pfa from experimental detection output scores
-[P_miss,P_fa] = Compute_DET (out_target, out);
+[P_miss,P_fa] = Compute_DET (target_score, imposter_score);
 
 %------------------------------
 %plot results
