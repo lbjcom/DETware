@@ -22,10 +22,10 @@ Set_DCF (10, 1, 0.01);
 %plot results
 
 % Set tic marks
-Pmiss_min = 0.01;
-Pmiss_max = 0.45;
-Pfa_min = 0.01;
-Pfa_max = 0.45;
+Pmiss_min = 0.001;
+Pmiss_max = 0.20;
+Pfa_min = 0.001;
+Pfa_max = 0.20;
 Set_DET_limits(Pmiss_min,Pmiss_max,Pfa_min,Pfa_max);
 
 %call figure, plot DET-curve
